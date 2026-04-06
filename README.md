@@ -33,7 +33,7 @@ Extracts pages from a PDF file based on its bookmarks. Each bookmark becomes a s
 | `pdf` | Path to the source PDF file (required) |
 | `-o`, `--output-dir` | Directory to write extracted files into (optional) |
 
-If `--output-dir` is omitted, a folder named `<pdf-name>_bookmarks` is created next to the source PDF.
+If `--output-dir` is omitted, a folder named `<pdf-name>` is created next to the source PDF.
 
 ### Examples
 
@@ -41,7 +41,7 @@ Extract pages using the default output folder:
 
 ```powershell
 .venv\Scripts\python pdf_bookmark_extractor.py C:\Documents\report.pdf
-# Output: C:\Documents\report_bookmarks\
+# Output: C:\Documents\report\
 ```
 
 Extract pages into a custom folder:
@@ -55,7 +55,7 @@ Extract pages into a custom folder:
 For each bookmark (or bookmark group) found in the PDF, one file is created:
 
 ```
-report_bookmarks\
+report\
   Introduction.pdf
   Chapter 1.pdf
   Chapter 2.pdf

@@ -1,4 +1,5 @@
-"""
+
+"""
 PDF Bookmark Extractor
 Reads bookmarks from a PDF and extracts each referenced page into its own PDF file.
 Bookmarks whose titles end with a parenthesised number — e.g. "Song (1)", "Song (2)" —
@@ -140,14 +141,14 @@ def main() -> None:
         "-o", "--output-dir",
         type=Path,
         default=None,
-        help="Directory for output files (default: <pdf-name>_bookmarks/ next to the PDF)",
+        help="Directory for output files (default: <pdf-name>/ next to the PDF)",
     )
     args = parser.parse_args()
 
     if not args.pdf.is_file():
         sys.exit(f"Error: '{args.pdf}' is not a file or does not exist.")
 
-    output_dir = args.output_dir or args.pdf.parent / (args.pdf.stem + "_bookmarks")
+    output_dir = args.output_dir or args.pdf.parent / args.pdf.stem
     extract_pages(args.pdf, output_dir)
 
 
