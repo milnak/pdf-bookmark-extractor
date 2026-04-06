@@ -39,7 +39,8 @@ def get_bookmarks(reader: pypdf.PdfReader) -> list[tuple[str, int]]:
             else:
                 try:
                     page_index = reader.get_destination_page_number(item)
-                    results.append((item.title, page_index))
+                    if page_index is not None:
+                        results.append((item.title, page_index))
                 except Exception:
                     pass
 
