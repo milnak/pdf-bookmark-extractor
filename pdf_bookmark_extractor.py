@@ -115,6 +115,10 @@ def extract_pages(pdf_path: Path, output_dir: Path) -> None:
     for i, (base_title, _page_indices, start_page) in enumerate(ordered):
         end_page = ordered[i + 1][2] - 1 if i + 1 < len(ordered) else total_pages - 1
 
+        if end_page < start_page:
+            print(f"  [SKIP] '{base_title}'  →  0 pages, skipping")
+            continue
+
         writer = pypdf.PdfWriter()
         for page_index in range(start_page, end_page + 1):
             writer.add_page(reader.pages[page_index])
